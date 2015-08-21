@@ -8,7 +8,7 @@ module.exports = function(params) {
         rendererName = params.renderer || 'render',
         templateName = params.template;
 
-    return function(resolver, res, finish) {
+    return function(caller, resolver, res, next, finish) {
         var renderer = resolver(rendererName);
 
         if (!renderer) {
@@ -23,13 +23,21 @@ module.exports = function(params) {
                 }, {});
         }
 
-        renderer(templateName, context, function(err, data) {
-            if (!err) {
-                res.headers('Content-Type', contentType);
-                res.write(data);
+        function callback(err, data) {
+            if (err) {
+                next(err);
+                return;
             }
 
-            finish(err);
+            res.header('Content-Type', contentType);
+            res.write(data);
+            finish();
+        }
+
+        caller(renderer, null, {
+            template: templateName,
+            context: context,
+            callback: callback
         });
     };
 };

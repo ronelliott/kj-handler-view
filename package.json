@@ -19,7 +19,7 @@
     "coveralls": "^2.11.4",
     "istanbul": "^0.3.17",
     "mocha": "^2.2.5",
-    "reflekt": "^0.3.6",
+    "reflekt": "^0.3.7",
     "should": "^7.0.4",
     "sinon": "^1.15.4"
   },
