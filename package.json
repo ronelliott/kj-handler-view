@@ -1,6 +1,6 @@
 {
   "name": "kj-handler-view",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "View rendering handler for the kj webapp framework.",
   "author": "Ron Elliott <ronaldbelliott@gmail.com>",
   "license": "ISC",
